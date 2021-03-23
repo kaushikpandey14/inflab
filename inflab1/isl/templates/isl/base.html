@@ -1,0 +1,102 @@
+<html>
+
+<head>
+    <title>ISL LAB</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+        crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+
+</head>
+<style media="screen">
+    body {
+        background-color: wheat;
+    }
+
+    label {
+        width: 350px;
+        font-size: 20px;
+    }
+</style>
+
+<body class="bg-light">
+
+    <nav id="nav" class="navbar navbar-default navbar-fixed-top navbar-inverse ">
+        <div class="container-fluid">
+            <div class="navbar-header navbar-left">
+                <a href="#" id="navbar-brand" class="navbar-brand">I S L</a>
+            </div>
+
+
+            <div class="navbar-header navbar-right" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li> <a href="#">OUTPUT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container" style="text-align: center;">
+        <br><br>
+        <div class="jumbotron" style="text-align: center;background-color:rgb(0, 190, 0);">
+            <H1>OPTIMAL NODE PLACEMENT</H1>
+        </div>
+        <div class="card">
+            <form align="left" method="POST" action="general1">
+
+            {% csrf_token %}
+            <div class="col-md-12">
+                <label for="">  No. of slabs on X-axis : </label><select name="slabs"
+                style="width: 500px;height:50px;font-size:20px; margin-bottom:40px;" required>
+                <option selected> ----select----</option>
+                <option>2</option>
+                <option>4</option>
+                <option>6</option>
+                </select>
+            </div>
+            <br><br>
+            
+            <div class="col-md-4">
+                <label for="">Total length of Container : </label> <input type="text" name="length"
+                style="height:50px; width:100%;font-size:20px;margin-bottom:20px;" id="text" required><br><br><br>
+
+            </div>
+            <div class="col-md-4">
+                <label for="">Total breadth of Container :</label> <input type="text" name="breadth"
+                style="height:50px; width:100%;font-size:20px;margin-bottom:20px;" id="text" value="8"><br><br><br>
+            </div>
+            <div class="col-md-4">
+                <label for="">Total height of Container : </label><input type="text" name="height"
+                style="height:50px; width:100%;font-size:20px;margin-bottom:20px;" id="text" value="8"><br><br><br>
+            </div>
+            
+            <div class="col-lg-6">
+                <label for="">Total cost of Nodes Assigned : </label><input type="text" name="cost"
+                style="height:50px;width:100%;font-size:20px;margin-bottom:20px;" required><br><br><br>
+            </div>
+
+            <div class="col-lg-6">
+                <label for="">No. of nodes to be Optimize : </label><input type="text" name="nodes"
+                style="height:50px; width:100%;font-size:20px;margin-bottom:20px;" id="text" required><br><br><br>
+            </div>
+            
+
+            <br><br><br>
+
+            <div class="col-md-12">
+                <input type="submit" value="submit" class="btn btn-default"
+                style="color:rgb(255, 255, 255);height:50px;width:200px;margin-bottom:20px;; background-color:rgb(0, 190, 0);margin-left:40%; font-size:20px"><br><br><br>
+            </div>
+        
+            </form>
+        </div>
+    </div>
+
+    <br><br><br>
+</body>
+
+</html>

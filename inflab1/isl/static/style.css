@@ -1,0 +1,16 @@
+
+body{
+    font-family: sans-serif;
+    overflow: hidden;
+}
+
+.scene,.scene1,canvas,canvas1{
+    position:relative; 
+    width: 10%;
+    height:50%;
+    display:block;  
+}
+
+.container{
+    width: 48%;
+}

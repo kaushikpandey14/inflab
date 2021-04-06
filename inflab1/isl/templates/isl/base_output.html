@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,54 +8,71 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="isl/style.css" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
     <style>
        
      
     </style>
 </head>
 <body style="background-color:#f5deb3;">
-    <nav id="nav" class="navbar navbar-default navbar-fixed-top navbar-inverse ">
+    <nav id="nav" class="a navbar navbar-default navbar-fixed-top navbar-inverse ">
         <div class="container-fluid">
             <div class="navbar-header navbar-left">
-                <a href="#" id="navbar-brand" class="navbar-brand">I S L</a>
+                <a href="{% url 'isl:base' %}" id="navbar-brand" class="navbar-brand">I S L</a>
             </div>
-    
-    
-            <div class="navbar-header navbar-right" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li> <a href="#"></a></li>
-                </ul>
-            </div>
+
         </div>
     </nav>
-    <div scr="E:\inflab\inflab1\isl\templates\isl\22.jpg"></div>
-    <div class="container-fluid">
-        <div class="card"  >
-            <div class="jumbotron" style="text-align: center;background-color:rgb(0, 190, 0); margin:18%;margin-left: 50%;">
-                <h1>RESULTS</h1>
-                <h2>{{base_data}}</h2>
-            </div>
-        </div>
+    
+    
+<div class="container col-lg-6" style="text-align: center;  margin-top:6%;">
+    <div class="a col-lg-3"
+        style="text-align: center;background-color:#00be00; margin:15px; width:200px; height: 150px; ">
+        <h3><label>slabs </label></h3>
+
+        <h2>{{base_data1}}</h2>
     </div>
-    <div class="scene"></div>
+    <div class="a col-lg-3" style="text-align: center;background-color:#00be00; margin:15px;width:200px;height: 150px; ">
+        <h3><label>Container dimensions</label></h3>
+        <h3>{{base_data2}}</h3>
+    </div>
+    <div class="a col-lg-3" style="text-align: center;background-color:#00be00; margin:15px;width:200px;height: 150px;">
+        <h3><label>No. of optimal Nodes</label></h3>
+        <h3>{{base_data3}}</h3>
+    </div>
+
+
+    <div class="a jumbotron col-lg-12" style="text-align: center;background-color:#00be00;  margin-top: 5%;">
+        <h1>RESULTS</h1>
+        <h4>Below shown result discribe nodes at optimal location on 3D model</h4>
+        <h2>{{base_data}}</h2>
+    </div>
+</div>
+  <div class="a container col-lg-6 col-md-6">  
+    <div class="scene col-lg-6">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.js"
         integrity="sha512-aPhrlLlp7Mr8g+MVw6/wMD8PjqqzRNhSM8pHDyyJPmUTJMzKxMmxrjauzQforOaAegN3CIKUTKXJyLwFD57RtA=="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TimelineMax.min.js"
         integrity="sha512-MBKN+F1LTtgzsnhh92u6fEklbJbv13vKI/2BZP0LLR8+IMeqlp0h10R6afWaJv2HIJfTOQkjW0LCPrIFEkZVeg=="
         crossorigin="anonymous"></script>
-    <script src="MTLLoader.js"></script>
-    <script src="OBJLoader.js"></script>
-    <script src="OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"
+        integrity="sha512-6MCPs9fbSIt6mTpJH2Lbo9Kk71gcgwY85BCqJGP04x+O08W3m/OiKfMiMc4VQKYn+DCtAQwpGumWeD0cACeRsQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.0/gsap.min.js"
+            integrity="sha512-gNmE7RbgFn8AIEtbCw00Ub5JYgsSRyQ1rvim/sVuzJcDCrhUwAjWCOlEgi9yr7xJBAgesPoUq6xzhci0pn7+qw=="
+            crossorigin="anonymous"></script>
+    <script src="{% static 'MTLLoader.js' %}"></script>
+    <script src="{% static 'OBJLoader.js' %}"></script>
+    <script src="{% static 'OrbitControls.js' %}"></script>
     <script>
 
-        var x = window.innerWidth / 2;
+        var x = window.innerWidth/2;
         var y = window.innerHeight;
         var scene = new THREE.Scene();
         const fov = 95;
         const aspect = x / y;
-        const near = 10.;
+        const near = 1;
         const far = 2000;
 
         var camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
@@ -77,7 +95,7 @@
         })
 
         controls = new THREE.OrbitControls(camera, renderer.domElement);
-        camera.position.set(-500, 400, 500);
+        camera.position.set(-250,200, 300);
         controls.update();
         controls.listenToKeyEvents(window); // optional
 
@@ -103,17 +121,18 @@
         var ourObj2;
 
         var mtlLoader = new THREE.MTLLoader();
-        mtlLoader.load('kp2.mtl', function (materials) {
+        mtlLoader.load("{% static 'kp2.mtl' %}", function (materials) {
             materials.preload();
 
             var objLoader = new THREE.OBJLoader();
             objLoader.setMaterials(materials);
-            objLoader.load('kp2.obj', function (object) {
+            objLoader.load("{% static 'kp2.obj' %}", function (object) {
                 scene.add(object);
 
                 object.position.z = 0;
                 object.rotation.x = 0;
                 object.rotation.y = 0;
+ 
             });
         });
 
@@ -128,11 +147,20 @@
 
         render();
 
-                    //this.tl = new TimelineMax().delay(.3);
-                    //this.tl.to(this.mesh.scale, 1, { x: 2, ease: Expo.easeOut })
+                   
 
 
 
     </script>
+    </div>
+</div>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+<script>
+
+
+    gsap.from('.a', { opacity: 0, duration: 1.5, stagger: 0.4 });
+   
+
+</script>
 </body>
 </html>

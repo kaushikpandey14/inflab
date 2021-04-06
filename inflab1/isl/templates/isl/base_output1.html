@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+    integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <style>
+
+
+    </style>
+</head>
+
+<body style="background-color:#f5deb3;">
+    <nav id="nav" class="a navbar navbar-default navbar-fixed-top navbar-inverse ">
+        <div class="container-fluid">
+            <div class="navbar-header center">
+                <a class="navbar-brand" href="{% url 'isl:base' %}"   style="font :#f5deb3;"><b>I S L</b></a>
+            </div>
+
+        </div>
+    </nav>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.js"
+            integrity="sha512-aPhrlLlp7Mr8g+MVw6/wMD8PjqqzRNhSM8pHDyyJPmUTJMzKxMmxrjauzQforOaAegN3CIKUTKXJyLwFD57RtA=="
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TimelineMax.min.js"
+            integrity="sha512-MBKN+F1LTtgzsnhh92u6fEklbJbv13vKI/2BZP0LLR8+IMeqlp0h10R6afWaJv2HIJfTOQkjW0LCPrIFEkZVeg=="
+            crossorigin="anonymous"></script>
+        <script src="{% static 'MTLLoader.js' %}"></script>
+        <script src="{% static 'OBJLoader.js' %}"></script>
+        <script src="{% static 'OrbitControls.js' %}"></script>
+
+
+
+    <div class="container col-lg-6 col-md-6" style="text-align: center;  margin-top:6%;">
+        <div class="a col-lg-3" style="text-align: center;background-color:#00be00; margin: 15px; width:200px; height: 150px; ">
+            <h3><label>slabs           </label></h3>
+        
+            <h2>{{base_data1}}</h2>
+        </div>
+        <div class="a col-lg-3" style="text-align: center;background-color:#00be00; margin:15px;width:200px;height: 150px; ">
+            <h3><label>Container dimensions</label></h3>
+            <h3>{{base_data2}}</h3>
+        </div>
+        <div class="a col-lg-3" style="text-align: center;background-color:#00be00; margin:15px;width:200px;height: 150px;">
+            <h3><label>No. of optimal Nodes</label></h3>
+            <h3>{{base_data3}}</h3>
+        </div>
+       
+        
+        <div class="a jumbotron col-lg-12" style="text-align: center;background-color:#00be00;  margin-top: 5%;">
+            <h1>RESULTS</h1>
+            <h2>{{base_data}}</h2>
+        </div>
+    </div>
+   <div class="a container col-lg-6 col-md-6"> 
+    <div class="scene1 ">
+
+        <script>
+
+            var x = window.innerWidth / 2;
+            var y = window.innerHeight;
+            var scene = new THREE.Scene();
+            const fov = 95;
+            const aspect = x / y;
+            const near = 1;
+            const far = 2000;
+
+            var camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+
+
+
+
+            var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setClearColor("#f5deb3")
+            renderer.setSize(x, y);
+            //renderer.setPixelRatio(window.devicePixelRatio);
+
+            document.body.appendChild(renderer.domElement);
+
+            window.addEventListener('resize', () => {
+
+                renderer.setSize(x, y);
+                camera.aspect = x / y;
+                camera.updateProjectionMatrix();
+            })
+
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            camera.position.set(-250, 200, 300);
+            controls.update();
+            controls.listenToKeyEvents(window); // optional
+
+            //controls.addEventListener( 'change', render ); // call this only in static scenes (i.e., if there is no animation loop)
+
+            controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+            controls.dampingFactor = 0.05;
+
+            controls.screenSpacePanning = false;
+
+            controls.minDistance = 100;
+            controls.maxDistance = 500;
+
+            controls.maxPolarAngle = Math.PI / 2;
+
+            var light = new THREE.AmbientLight(0xFFFFFF, 0.25, 500)
+            light.position.set(0, 0, 255);
+            scene.add(light);
+
+
+
+            var ourObj;
+            var ourObj2;
+
+            var mtlLoader = new THREE.MTLLoader();
+            mtlLoader.load("{% static 'kp3.mtl' %}", function (materials) {
+                materials.preload();
+
+                var objLoader = new THREE.OBJLoader();
+                objLoader.setMaterials(materials);
+                objLoader.load("{% static 'kp3.obj' %}", function (object) {
+                    scene.add(object);
+
+                    object.position.z = 0;
+                    object.rotation.x = 0;
+                    object.rotation.y = 0;
+
+                });
+            });
+
+
+
+            var render = function () {
+                requestAnimationFrame(render);
+                //object.rotation.z += 0.003;
+                controls.update();
+                renderer.render(scene, camera);
+            }
+
+            render();
+
+
+
+
+
+        </script>
+    </div>
+</div>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+<script>
+
+   
+    gsap.from('.a', { opacity: 0, duration: 1.5, stagger: 0.4 });
+
+</script>
+</body>
+
+</html>
+

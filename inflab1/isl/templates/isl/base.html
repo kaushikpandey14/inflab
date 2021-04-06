@@ -26,18 +26,12 @@
 
 <body class="bg-light">
 
-    <nav id="nav" class="navbar navbar-default navbar-fixed-top navbar-inverse ">
+    <nav id="nav" class="a navbar navbar-default navbar-fixed-top navbar-inverse ">
         <div class="container-fluid">
             <div class="navbar-header navbar-left">
-                <a href="#" id="navbar-brand" class="navbar-brand">I S L</a>
+                <a href="{% url 'isl:base' %}" id="navbar-brand" class="navbar-brand">I S L</a>
             </div>
 
-
-            <div class="navbar-header navbar-right" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li> <a href="#">OUTPUT</a></li>
-                </ul>
-            </div>
         </div>
     </nav>
     <div class="container" style="text-align: center;">
@@ -49,7 +43,7 @@
             <form align="left" method="POST" action="general1">
 
             {% csrf_token %}
-            <div class="col-md-12">
+            <div class="a col-md-12">
                 <label for="">  No. of slabs on X-axis : </label><select name="slabs"
                 style="width: 500px;height:50px;font-size:20px; margin-bottom:40px;" required>
                 <option selected> ----select----</option>
@@ -60,26 +54,26 @@
             </div>
             <br><br>
             
-            <div class="col-md-4">
+            <div class="a col-md-4">
                 <label for="">Total length of Container : </label> <input type="text" name="length"
                 style="height:50px; width:100%;font-size:20px;margin-bottom:20px;" id="text" required><br><br><br>
 
             </div>
-            <div class="col-md-4">
+            <div class="a col-md-4">
                 <label for="">Total breadth of Container :</label> <input type="text" name="breadth"
                 style="height:50px; width:100%;font-size:20px;margin-bottom:20px;" id="text" value="8"><br><br><br>
             </div>
-            <div class="col-md-4">
+            <div class="a col-md-4">
                 <label for="">Total height of Container : </label><input type="text" name="height"
                 style="height:50px; width:100%;font-size:20px;margin-bottom:20px;" id="text" value="8"><br><br><br>
             </div>
             
-            <div class="col-lg-6">
+            <div class="a col-lg-6">
                 <label for="">Total cost of Nodes Assigned : </label><input type="text" name="cost"
                 style="height:50px;width:100%;font-size:20px;margin-bottom:20px;" required><br><br><br>
             </div>
 
-            <div class="col-lg-6">
+            <div class="a col-lg-6">
                 <label for="">No. of nodes to be Optimize : </label><input type="text" name="nodes"
                 style="height:50px; width:100%;font-size:20px;margin-bottom:20px;" id="text" required><br><br><br>
             </div>
@@ -87,7 +81,7 @@
 
             <br><br><br>
 
-            <div class="col-md-12">
+            <div class="a col-md-12">
                 <input type="submit" value="submit" class="btn btn-default"
                 style="color:rgb(255, 255, 255);height:50px;width:200px;margin-bottom:20px;; background-color:rgb(0, 190, 0);margin-left:40%; font-size:20px"><br><br><br>
             </div>
@@ -97,6 +91,14 @@
     </div>
 
     <br><br><br>
+
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+    <script>
+        
+        gsap.from('.jumbotron',{opacity:0, duration: 1.5,y:300, ease: "power1"});
+        gsap.from('.a', { opacity: 0, duration:1.5 ,delay:1 ,stagger:0.3 });
+    
+    </script>
 </body>
 
 </html>

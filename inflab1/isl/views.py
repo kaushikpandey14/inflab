@@ -205,21 +205,36 @@ def general1(request):
             nlp.solve(disp=False)
             
             #print('x1:'+ str(x1.value[0]))
-            result.append('x1:'+ str(x1.value[0]))
-            result.append('x2:'+ str(x2.value[0]))
-            result.append('x3:'+ str(x3.value[0]))
-            result.append('x4:'+ str(x4.value[0]))
-            result.append('x5:'+ str(x5.value[0]))
-            result.append('x6:'+ str(x6.value[0]))
-            result.append('x7:'+ str(x7.value[0]))
-            result.append('x8:'+ str(x8.value[0]))
-            result.append('x9:'+ str(x9.value[0]))
-            result.append('x10:'+ str(x10.value[0]))
-            result.append('x11:'+ str(x11.value[0]))
-            result.append('x12:'+ str(x12.value[0]))
-            result.append('x13:'+ str(x13.value[0]))
-            result.append('x14:'+ str(x14.value[0]))
-            result.append('x15:'+ str(x15.value[0]))
+            if x1.value[0]==1:
+                result.append('  x1='+ str(x1.value[0]))
+            if x2.value[0]==1:
+                result.append('  x2='+ str(x2.value[0]))
+            if x3.value[0]==1:
+                result.append('  x3='+ str(x3.value[0]))
+            if x4.value[0]==1:
+                result.append('  x4='+ str(x4.value[0]))
+            if x5.value[0]==1:
+                result.append('  x5='+ str(x5.value[0]))
+            if x6.value[0]==1:
+                result.append('  x6='+ str(x6.value[0]))
+            if x7.value[0]==1:
+                result.append('  x7='+ str(x7.value[0]))
+            if x8.value[0]==1:
+                result.append('  x8='+ str(x8.value[0]))
+            if x9.value[0]==1:
+                result.append('  x9='+ str(x9.value[0]))
+            if x10.value[0]==1:
+                result.append('  x10='+ str(x10.value[0]))
+            if x11.value[0]==1:
+                result.append('  x11='+ str(x11.value[0]))
+            if x12.value[0]==1:
+                result.append('  x12='+ str(x12.value[0]))
+            if x13.value[0]==1:
+                result.append('  x13='+ str(x13.value[0]))
+            if x14.value[0]==1:
+                result.append('  x14='+ str(x14.value[0]))
+            if x15.value[0]==1:
+                result.append('  x15='+ str(x15.value[0]))
             
             #result.append('Objective:' + str(nlp.options.objfcnval))
             #print('d3 :',d12,'a3 :', a12)
@@ -332,31 +347,56 @@ def general1(request):
             nlp.Minimize(z)
             nlp.solve(disp=False)
             
-            result.append('x1: '+ str(x1.value[0]))
-            result.append('x2: '+ str(x2.value[0]))
-            result.append('x3: '+ str(x3.value[0]))
-            result.append('x4: '+ str(x4.value[0]))
-            result.append('x5: '+ str(x5.value[0]))
-            result.append('x6: '+ str(x6.value[0]))
-            result.append('x7: '+ str(x7.value[0]))
-            result.append('x8: '+ str(x8.value[0]))
-            result.append('x9: '+ str(x9.value[0]))
-            result.append('x10: '+ str(x10.value[0]))
-            result.append('x11: '+ str(x11.value[0]))
-            result.append('x12: '+ str(x12.value[0]))
-            result.append('x13: '+ str(x13.value[0]))
-            result.append('x14: '+ str(x14.value[0]))
-            result.append('x15: '+ str(x15.value[0]))
-            result.append('x16: '+ str(x16.value[0]))
-            result.append('x17: '+ str(x17.value[0]))
-            result.append('x18: '+ str(x18.value[0]))
-            result.append('x19: '+ str(x19.value[0]))
-            result.append('x20: '+ str(x20.value[0]))
-            result.append('x21: '+ str(x21.value[0]))
-            result.append('x22: '+ str(x22.value[0]))
-            result.append('x23: '+ str(x23.value[0]))
-            result.append('x24: '+ str(x24.value[0]))
-            result.append('x25: '+ str(x25.value[0]))
+            if x1.value[0]==1:
+                result.append('  x1='+ str(x1.value[0]))
+            if x2.value[0]==1:
+                result.append('  x2='+ str(x2.value[0]))
+            if x3.value[0]==1:
+                result.append('  x3='+ str(x3.value[0]))
+            if x4.value[0]==1:
+                result.append('  x4='+ str(x4.value[0]))
+            if x5.value[0]==1:
+                result.append('  x5='+ str(x5.value[0]))
+            if x6.value[0]==1:
+                result.append('  x6='+ str(x6.value[0]))
+            if x7.value[0]==1:
+                result.append('  x7='+ str(x7.value[0]))
+            if x8.value[0]==1:
+                result.append('  x8='+ str(x8.value[0]))
+            if x9.value[0]==1:
+                result.append('  x9='+ str(x9.value[0]))
+            if x10.value[0]==1:
+                result.append('  x10='+ str(x10.value[0]))
+            if x11.value[0]==1:
+                result.append('  x11='+ str(x11.value[0]))
+            if x12.value[0]==1:
+                result.append('  x12='+ str(x12.value[0]))
+            if x13.value[0]==1:
+                result.append('  x13='+ str(x13.value[0]))
+            if x14.value[0]==1:
+                result.append('  x14='+ str(x14.value[0]))
+            if x15.value[0]==1:
+                result.append('  x15='+ str(x15.value[0]))
+            if x16.value[0]==1:
+                result.append('  x16='+ str(x16.value[0]))
+            if x17.value[0]==1:
+                result.append('  x17='+ str(x17.value[0]))
+            if x18.value[0]==1:
+                result.append('  x18='+ str(x18.value[0]))
+            if x19.value[0]==1:
+                result.append('  x19='+ str(x19.value[0]))
+            if x20.value[0]==1:
+                result.append('  x20='+ str(x20.value[0]))
+            if x21.value[0]==1:
+                result.append('  x21='+ str(x21.value[0]))
+            if x22.value[0]==1:
+                result.append('  x22='+ str(x22.value[0]))
+            if x23.value[0]==1:
+                result.append('  x23='+ str(x23.value[0]))
+            if x24.value[0]==1:
+                result.append('  x24='+ str(x24.value[0]))
+            if x25.value[0]==1:
+                result.append('  x25='+ str(x25.value[0]))
 
 
             #print('   d: '+ str(d.value[0]))
@@ -552,6 +592,8 @@ def general1(request):
             elif num==35:
                 optimizer3(C,N)
     opti(slabs,length,breadth,height,cost,nodes)
-    return render(request,"base_output.html",{'base_data':result})
-
+    if slabs==2:
+        return render(request,"base_output.html",{'base_data':result,'base_data1':slabs,'base_data2':(length,breadth,height),'base_data3':nodes})
+    if slabs==4:
+        return render(request,"base_output1.html",{'base_data':result,'base_data1':slabs,'base_data2':(length,breadth,height),'base_data3':nodes})
     
